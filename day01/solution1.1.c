@@ -24,6 +24,11 @@ int *read_input() {
   return data;
 }
 
+int mod(int a, int b){
+  int c = a % b;
+  return c >= 0 ? c : b + c;
+}
+
 int main(int argc, char *argv[]) {
   int start_value = 50;
   int current_value = start_value;
@@ -33,7 +38,7 @@ int main(int argc, char *argv[]) {
     printf("%d\n", data[i]);
     current_value = (current_value + data[i]);
     if( current_value < 0) current_value = 100 + current_value;
-    current_value %= 100;
+    current_value = mod(current_value, 100);
     if( current_value == 0) count_zero++;
     printf("%d, zeros=%d\n", current_value, count_zero);
   }
